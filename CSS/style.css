@@ -1,0 +1,810 @@
+/*----------------------------------Variables declarations---------------------------------------*/
+:root{
+    --color-primary: #6f6af8;
+    --color-primary-light: hsl(242, 91%, 69%, 18%);
+    --color-primary-variant: #5854c7;
+    --color-red: #da0f3f;
+    --color-red-light: hsl(346, 87%, 46%, 15%);
+    --color-green: #00c476;
+    --color-green-light: hsl(156, 100%, 38%, 15%);
+    --color-gray-900: #1e1e66;
+    --color-gray-700: #2d2b7c;
+    --color-gray-300: rgba(242, 242, 254, 0.3);
+    --color-gray-200: rgba(242, 242, 254, 0.7);
+    --color-white: #f2f2fe;
+    --color-bg: #0f0f3e;
+
+    --transition: all 300ms ease;
+
+    --container-width-lg: 74%;
+    --container-width-md: 88%;
+    --form-width: 40%;
+}
+
+/*---------------------------------- GENERAL ---------------------------------------*/
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0; /*Delete the border for buttons*/
+
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body{
+    background: var(--color-bg);
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1 rem;
+    color: var(--color-gray-200);
+    line-height: 1.6; /* Space between each line */
+    overflow-x: hidden; 
+}
+
+section{
+    margin-top: 3rem;
+    width: 100vw;   
+}
+
+.container{
+    max-width: 1800px;
+    width: var(--container-width-lg);
+    margin-inline:auto;
+}
+h1, h2, h3, h4, h5, h6{
+    color: var(--color-white);
+    line-height: 1.6;
+}
+h1{
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+
+h2{
+    font-size: 1.7rem;
+    margin: 1rem 0;
+}
+
+h3{
+    font-size: 1.1rem;
+    margin: 0.8rem 0.8rem;
+}
+
+h4{
+    font-size: 1rem;
+}
+
+a{
+    color: var(--color-gray-200);
+    transition: var(--transition);
+}
+img{
+    display: block;
+    object-fit: cover;
+    width: 100%;
+}
+
+button{
+    cursor: pointer;
+}
+/*============================== BUTTON ==========================*/
+
+.btn {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--color-primary);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+    color: var(--color-white);
+}
+
+.btn.sm {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.btn.sm.danger {
+    background: var(--color-red);
+}
+
+.btn:hover {
+    background: var(--color-white);
+    color:var(--color-bg);
+}
+
+/*---------------------------------- NAVBAR ---------------------------------------*/
+nav{
+   background: var(--color-primary);
+   position: fixed;
+   z-index: 999;
+   top: 0;
+   width: 100vw;
+   height: 4.5rem;
+   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.);
+}
+.nav__container{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+nav button{
+    display: none;
+}
+.nav__container-links{
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+}
+
+.nav__logo{
+    font-size: 2.5rem;
+    font-family: 'Vampiro One', sans-serif;
+}
+
+.avatar {
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+    border: .3rem solid var(--color-bg);
+}
+
+.nav__profile{
+    position: relative;
+    cursor: pointer;
+}
+.nav__profile ul{
+    position: absolute;
+    top: 140%;
+    right: 0;
+    box-shadow: 0 3rem 3rem rgba(0, 0, 0, 0.4);
+    visibility: hidden;
+    opacity: 0;
+    transition: var(--transition);
+    
+}
+
+.nav__profile:hover > ul{
+   visibility: visible;
+   opacity: 1;
+}
+.nav__profile ul li a{
+    background: var(--color-gray-900);
+    display: block;
+    width: 100%;
+    padding: 1rem;
+}
+.nav__profile ul li:last-child a{
+    background: var(--color-red);
+    color: var(--color-bg);
+}
+
+/*---------------------------------- CATEGORY BUTTON ---------------------------------------*/
+
+.category{
+    display: inline-block;
+    text-align: center;
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+    border-radius: .5rem;
+    padding: .5rem 1rem;
+    font-weight: 600;
+    font-size: .8rem;
+}
+
+.category:hover{
+    color: var(--color-white);
+    transition: var(--transition);
+}
+
+/*---------------------------------- GENERAL POST ---------------------------------------*/
+.post-image{
+    border: 1rem solid var(--color-gray-900);
+    border-radius: 8rem 0;
+    overflow: hidden;
+    margin-bottom: 1.6rem;
+}
+
+.post:hover .post-image img{
+    filter: saturate(0);
+    transition: var(--transition);
+}
+.post_profile{
+   display: flex;
+   align-items: center;
+   gap: 1rem;
+   margin-top: 1.2rem;
+}
+.post-profile-info p{
+    font-size: .8rem;
+}
+.post_profile-img{
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: 30%;
+  overflow: hidden;
+}
+
+/*---------------------------------- LAST POST ---------------------------------------*/
+.last__post{
+    margin-top: 8rem;
+}
+
+.last__post-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.post-image{
+    height: fit-content;
+}
+
+/*---------------------------------- GENERAL POST ---------------------------------------*/
+.general__post-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5rem;
+    margin-bottom: 5rem;
+}
+
+/*---------------------------------- CATEGORY BUTTONs ---------------------------------------*/
+.categories{
+    border-top: 2px solid var(--color-gray-900);
+    border-bottom: 2px solid var(--color-gray-900);
+    padding: 4rem 0;
+}
+.categories__container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    width: fit-content;
+}
+
+/*---------------------------------- FOOTER ---------------------------------------*/
+footer{
+    background:var(--color-gray-900);
+    box-shadow: inset 0 1.5rem 1.5rem rgba(0, 0, 0, 0.4);
+}
+
+.footer__networks{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.3rem;
+    margin-inline: auto;
+    width: fit-content;
+    padding: 5rem 0;
+}
+
+.footer__networks a{
+    background: var(--color-bg);
+    border-radius: 50%;
+    height: 2.3rem;
+    width: 2.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer__networks a:hover{
+    background: var(--color-white);
+    color: var(--color-bg);
+}
+.footer__container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 4rem;
+}
+.footer__container article{
+   text-align: center;
+}
+
+.footer__container article ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+ }
+ footer ul a{
+    opacity: .75;
+ }
+footer ul a:hover{
+    letter-spacing: 0.2rem;
+    opacity: 1;
+}
+.footer__copyright{
+    text-align: center;
+    border-top: 3px solid var(--color-bg);
+    padding: 1.5rem 0;
+}
+
+/* ================================================================== SEARCH-BAR =============================================================== */
+.search{
+    margin-top: 7rem;
+}
+.search__container{
+    background:var(--color-gray-900);
+    color: var(--color-gray-300);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3.5rem;
+    width: 30rem;
+    border-radius: 9px;
+    padding: .6rem 1rem;
+}
+
+.search__container div{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: .9rem;
+    font-size: .9rem;
+}
+.search__container div input{
+    background: transparent;
+    width: 100%;
+    color: var(--color-white);
+    border: none;
+    
+}
+
+.search input::placeholder{
+    color: var(--color-gray-300);
+}
+
+.search__btn{
+    margin-left: 1rem;
+    padding: .7rem 1.3rem;
+    background: var(--color-primary);
+    border-radius: 8px;
+    color: var(--color-white);
+    transition: var(--transition);
+}
+
+.search__btn:hover{
+  background: var(--color-white);
+  color: var(--color-bg);
+}
+
+/*============================== POST ==========================*/
+.singlepost{
+    margin: 6rem 0 4rem;
+}
+
+.singlepost__container{
+    background: var(--color-gray-900);
+    padding:1rem 2rem 5rem;
+    width: 50rem;
+}
+.singlepost__image{
+    margin: 1rem 0;
+}
+
+/*============================== CATEGRIES TITLE ==========================*/
+.category__title{
+    margin-top: 4.5rem;
+    background: var(--color-gray-900);
+    height: 15rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+}
+
+/*============================== EMPTY PAGE ==========================*/
+.empty__page{
+    height: 70vh;
+    display: grid;
+    place-content: center;
+}
+
+/*============================== GENERAL FORM  ==========================*/
+
+.form__section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+height: 100vh;
+}
+
+.form__section-container{
+    width: var(--form-width);
+}
+
+.alert__message{
+    padding: .8rem 1.4rem;
+    border-radius: .8rem;
+    margin-bottom: 1rem;    
+}
+
+.alert__message.error{
+    background: var(--color-red-light);
+    color: var(--color-red);
+}
+
+.alert__message.success{
+    background: var(--color-green-light);
+    color: var(--color-green);
+}
+
+.alert__message.lg {
+    text-align: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;  
+}
+
+form input, select, textarea{
+    background: var(--color-gray-900);
+    color: var(--color-white);
+    padding: .8rem 1.4rem;
+    border-radius: .8rem;
+    width: 100%;
+    resize: none;
+}
+
+.uploadfile__container{
+    display: flex;
+    gap: .8rem;
+    flex-direction: column;
+}
+
+.uploadfile__container.inline{
+   align-items: center;
+   flex-direction: row;
+}
+
+.form__section small{
+    margin-top: 1rem;
+    display: block;
+}
+
+.form__section small a{
+    color: var(--color-primary);
+}
+
+ /*============================== DASHBOARD ==========================*/
+ .dashboard{
+   margin-top: 6rem;
+ }
+ 
+ .sidebar__toggle{
+    display: none;
+ }
+ .dashboard__container{
+    position: relative;
+    background:var(--color-gray-900);
+    display: grid;
+    grid-template-columns: 14rem auto;
+    gap: 1rem;
+    margin-bottom: 5rem;
+    padding: 2rem;
+ }
+
+ .dashboard aside a{
+    background-color: var(--color-primary);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding: 1.6rem;
+ }
+ .dashboard aside a:hover{
+    background: var(--color-gray-700); 
+ }
+ .dashboard aside li:not(:last-child) a {
+    border-bottom: 1px solid var(--color-gray-900);
+ }
+
+ .dashboard aside a.active{
+    background-color: var(--color-gray-900);
+ }
+
+ .dashboard main{
+   margin-left: 1.5rem;
+ }
+
+.dashboard main h2{
+    margin: 0 0 2rem 0;
+    line-height: 1;
+}
+
+.dashboard main table{
+    width: 100%;
+    text-align: left;
+}
+
+.dashboard main table th{
+    background: var(--color-gray-700);
+    color: var(--color-white);
+    padding: .8rem;
+}
+
+.dashboard main table td{
+    border-bottom: 1px solid var(--color-gray-200);
+    padding: .8rem;
+}
+
+.dashboard main table tr:hover td{
+    background: var(--color-bg);
+    color: var(--color-white);
+    transition: var(--transition);
+    /*cursor: default;*/
+}
+
+
+
+
+
+
+
+
+
+
+/* ================================================================== MEDIA QUERIES (MEDIUM DEVICES) =============================================================== */
+@media screen and (max-width: 1024px){
+    /*============================== GENERAL ==========================*/
+    .container{
+        width: var(--container-width-md);
+    }
+    h2{
+        font-size: 1.6rem;
+    }
+    h3{
+        font-size: 1.2rem;
+    }
+    h5{
+        font-size: .8rem;
+    }
+
+    /*============================== NAVBAR ==========================*/
+    .nav__container-links{
+        display: none;
+    }
+    nav button{
+        display:inline-block;
+        background: transparent;
+        font-size: 1.5rem;
+        color: var(--color-white);
+        cursor: pointer;
+    }   
+    nav button#close__nav-btn{
+        display: none;
+    }
+
+    .nav__container{
+        position: relative;
+    }
+    
+    .nav__container-links{
+        position: absolute;
+        flex-direction: column;
+        top: 100%;
+        right: 0;
+        width: 12rem;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 0;
+        perspective: 300px;
+        
+    }
+    /*-------------- Animation --------------*/
+    .nav__container-links li {
+        width: 100%;
+        height: 4.5rem;
+        display: flex;
+        align-items: center;
+        box-shadow: -2rem 3rem 7rem rgba(0, 0, 0, 0.7);
+        border-top: 1px solid var(--color-bg);
+        animation: dropDown 400ms 0s ease forwards;
+        opacity: 0;
+        transform-origin: top;
+    }
+    
+    .nav__container-links li:nth-child(2)
+    {
+        animation-delay: 200ms;
+    }
+    .nav__container-links li:nth-child(3)
+    {
+        animation-delay: 400ms;
+    }
+    .nav__container-links li:nth-child(4)
+    {
+        animation-delay: 600ms;
+    }
+    .nav__container-links li:nth-child(5)
+    {
+        animation-delay: 800ms;
+    }
+    .nav__container-links li:nth-child(6)
+    {
+        animation-delay: 1000ms;
+    }
+
+    @keyframes dropDown {
+        0%{
+            transform: rotateX(90deg);
+        }
+        100%{
+            transform: rotateX(0deg);
+            opacity: 1;
+        }
+    }
+
+    .nav__container-links li a{
+       background: var(--color-gray-900);
+       width: 100%;
+       height: 100%;
+       display: flex;
+       align-items: center;
+       padding-left: 2rem;
+
+   }
+   .nav__profile{
+      background: var(--color-gray-900);
+      
+   }
+
+   .nav__profile .avatar{
+      margin-left: 2rem;
+      border: 0;
+   }
+   .nav__profile ul{
+      width: 100%;
+      top: 100%;
+   }
+   .last__post-container{
+     gap: 3rem;
+   }
+   .general__post-container{
+        gap: 3rem;
+        grid-template-columns: 1fr 1fr;
+   }
+   .footer__container{
+      grid-template-columns: 1fr 1fr;
+   }
+
+    /*============================== SEARCH BLOG ==========================*/
+    .search__container{
+        width: 60%;
+    }
+    
+    /*============================== GENERAL FORM ==========================*/
+    .form__section-container{
+        padding: 3rem;
+    }
+
+    /*============================== DASHBOARD ==========================*/
+    .dashboard__container{
+        grid-template-columns: 4.5rem auto;
+        padding: 0;
+        background:transparent;
+    }
+
+    .dashboard aside h5{
+        display: none;
+    }
+}
+
+
+
+
+
+@media screen and (max-width: 600px) {
+    section {
+        margin-top: 2rem;
+    }
+
+    h1{
+        font-size: 2rem;
+    }
+    
+    .last__post{
+        margin-top: 6rem;
+    }
+    
+    .last__post-container{
+        grid-template-columns: 1fr;
+        gap: 0rem;
+    }
+     
+    .general__post-container{
+        gap: 2rem;
+        grid-template-columns: 1fr;
+    }
+    
+    .categories__container{
+    grid-template-columns: 1fr 1fr;
+    }
+
+    .footer__container{
+    grid-template-columns: 1fr 1fr;
+    }
+
+     /*============================== SEARCH BLOG ==========================*/
+     .search__container{
+        width: var(--container-width-md);
+    }
+
+    /*============================== GENERAL FORM ==========================*/
+    .form__section-container{
+        padding: 0;
+        margin-top: 4rem;
+    }
+
+    
+    /*============================== DASHBOARD ==========================*/
+    .dashboard{
+        margin-top: 5rem;
+    }
+
+    .dashboard__container{
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .dashboard main{
+        margin: 0;
+    }
+
+    .dashboard main h2{
+        margin-top: 2rem;
+    }
+
+    .dashboard aside{
+        position: fixed;
+        box-shadow: 2rem 0 4rem rgba(0, 0, 0, 0.4);
+        top:4.6rem;
+        left: -100%;
+        height: 100vh;
+        transition: var(--transition);
+        background: var(--color-primary);
+        z-index: 999;
+    }
+    .dashboard aside a h5{
+        display: inline-block;
+    }
+
+    .dashboard main table thead{
+        display: none;
+    }
+
+    .dashboard main table tr{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dashboard main table tr:nth-child(even) {
+        background: var(--color-gray-900);
+    }
+
+    .dashboard .sidebar__toggle{
+        display: inline-block;
+        background: var(--color-primary-variant);
+        color: var(--color-white);
+        position: fixed;
+        right: 0;
+        bottom: 4rem;
+        z-index: 900;
+        width: 2.5rem;
+        height: 2.5rem;
+        cursor: pointer;
+        border-radius: 50% 0 0;
+        font-size: 1.3rem;
+        box-shadow: -1rem 0 1rem rgba(0, 0, 0, 0.1);
+    }
+    
+    #hide_sidebar-btn{
+        display: none;
+    }
+}

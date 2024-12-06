@@ -1,0 +1,112 @@
+============================= CSS ===============================
+- border 
+- grid
+- position, top, left, right ...
+- animations
+
+=========================== TO COMPLETE A GREAT FRONT-END PROJECT ===============================
+1. ORGANISATION
+- Find main colors, font, icons, images that you will use for your project
+- Make a list of different fonctionnalities of the project and create a file for each of them if necessary
+
+================ HTML ============
+- A page must have a navbar, sections and footer.
+- Each main container must have a .container class to have a propotionnal width.
+- Name class based on the object or sometimes based on the general repeating.
+- linked evrything before duplication
+
+=============== CSS ===============
+- Use css variables: :root [colors, size, ...]
+- Comment your work
+- First start by general styles [div, section, buttons, nav, container ...]
+- Media queries [1024px, 600px]
+
+=========================== TO COMPLETE A GREAT BACK-END PROJECT ===============================
+
+=============== PHP ===============
+I. Conversion and organisation from the .html to .php and adim (constants.php, database.php)
+1. Create project, copy the front inside, structures folder (create an admin) files by changing extention and and liking elements together with the <?=ROOT_URL?>
+
+II. Draw the MCD and MPD, without forgetting the database creation.
+- Create a new user in myphpAdmin and modified the user and password in C:\wamp64\apps\phpmyadmin5.1.1\config.inc.php
+
+III. Steps to follow when grabbing a form input.
+1. Get the input using the method
+2. Validate the input by making some verification on them
+3. Store them in the database
+
+
+
+============================================================= TO-DO =================================================================
+1. Organize php in class (database, blog) (Done)
+2. Complete the work on signin: make all verification, redirect to the correct page(Done)
+3. Solve the media querie issues (Done)
+4. Add notification manage-user.php (Done)
+4. Work on edit and delete a user (Done)
+
+=== BUGs ====
+- Allow only one featured in the database {Done}
+- Solve the delete issue in the manage-post.php {Done}
+- Be able to set the new user as an admin when I add user (it doesn't work when I select the admin instead of author, it work like I select the author) [manage-user.php] (Done)
+- Allow to add only one category (Done)
+- Allow to add a single post based on the title {Done}
+=== BUGs ====
+
+6. Create categories table (Done)
+7. Complete delete category (Done)
+8. Create post table, add post, edit post (is_featured, update thubmail) (Done)
+9. Solve the category_id problem (Done)
+10.  Rewrite my deletepost.php (Done)
+11. Read add post and manage post to see how they suppose to work and come back to your program to do write it correctly (Done)
+12. In the edit post, when a new thubmail is add to modify the previous, it doesn't work. (Done)
+13. Make in way each user can see and manager is own posts (Done)
+
+
+
+
+
+
+NOTE
+- In signin handler, I have to grab data, make verification and redirect the user on his user account.
+- User-id will allowed me to know if I successfully login to be able to display the profile
+- Solve required inclusions
+- Paid attention with required: put the path from where it was called.
+- At each time I modify the database.php, I have to copy and replace in the admin/config
+- Access control if the user is an admin or not !
+- We start by creating users table and handle that before moving on other tables in the database.
+- In signin, 'user_id' allow me the check if a user is login or not to can give him access to some page and 'is_admin' is used in the admin/index.php to display some control.
+- Don't forget to add notifications on the corresponding page.
+- in the session we are only storing the id of the current user.
+- And we put the user of the user that we want to edit in the get the url. (conf manage, edit user).
+- Know when to put the id in the url
+- Know when to put the id in a hidden input
+- In the whole database, we only have one featured
+
+CODING ROAD
+- Access Control : signin & signup
+- Add user ==> manage user ==>
+
+
+PROCESS OF THIS PROJECT
+Start by creating folder to organised your work. You can have BLOG{admin{config{constants.php, database.php}, partials{header.php, footer.php}}, CSS{style.css}, Js{script.js}, {images{}} ...}
+Relise the project mockup, the template and from that, the final one, we figure out database table we need to create and the relation
+between tables.
+In the signin, when the all verification are done, we put in the session the user-id
+- Each person can add and manage is own post.
+Admin have access to manage user and manage categories
+- On the main page, we display 6 posts, order by the last added post
+PART 1: FRONT-END
+Create each file in is corresponding repository. And based on the template, create the content.
+In html, we have <section class="content_name"><div class="content_name__container container"> </div></section>.
+containter class allow us to center the content easily and efficiently.
+In css, we use css variables to make our work easy. In terms of implementing styles, begin with tags which doesn't have class_name.
+We comment our entire code. We also add the media queries to make it responsive.
+
+PART 2:  BACK-END
+We start here by creating class to connect to the database. Then we create a class to handleRequests.
+In terms of organisations in implementing. We first attack the the Users table, the signIn, signUp, add_someting, edit_something, delete_something.
+
+- How do I handle each request ?
+First get the input data from the method, verify if they are valid or not. if not create a $_SESSION['request_name'] = "error ..."
+
+After that, write another if to check if there is any error. if so redirect on the page. Otherwise, insert data in the database.
