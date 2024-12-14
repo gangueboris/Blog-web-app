@@ -43,16 +43,19 @@ This is a fully fonctionnal blog app
 - 
 #### 3. Configure Project Files
 - Open the ```httpd-vhosts.conf``` file from ```C:\wamp64\bin\apache\apache2.4.51\conf\extra\``` and append this
-- ```
+ ```
   <VirtualHost *:80>
       ServerName blog
       DocumentRoot "c:/wamp64/www/blog"
 </VirtualHost>
 ```
-- Open the ```hosts``` file from ```"C:\Windows\System32\drivers\etc\``` and append ```127.0.0.1 blog```
+- Open the ```hosts``` file from ```C:\Windows\System32\drivers\etc\``` and append ```127.0.0.1 blog```
 
-#### 4. Run the prject locally
+#### 4. Run the project locally
 - Open your browser and enter the project’s local URL: ```http://localhost/blog```
+
+
+
 
 
 Note:  The credentials of all users registered can be found in the zip file (registered-user-credentials.txt). Use any to log in to the application, and have fun!
