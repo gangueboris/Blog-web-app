@@ -40,5 +40,10 @@ This is a fully fonctionnal blog app
 - Open your web browser and go to: ```http://localhost/phpmyadmin```
 - Login with user : ```user``` and password: ```admin1234```
 - Create a database 'blog', and upload the SQL dump (blog-tables.sql) found in the extracted folder
-  
+- 
+#### 3. Configure Project Files
+- Open the ```httpd-vhosts.conf``` file from ``` ``` and append this ``` <VirtualHost *:80>
+	ServerName blog
+	DocumentRoot "c:/wamp64/www/blog"
+</VirtualHost>```
 - The credentials of all users registered can be found in the zip file (registered-user-credentials.txt). Use any to log in to the application, and have fun!
