@@ -1,5 +1,5 @@
 ## 🤖 Introduction
-This is a fully fonctionnal blog app
+This is a fully fonctionnal blog app that I made to learn more about php and mysql. this is my first project made with WAMP stack. I hope you will have fun in testing.
 
 ## ⚙️ Tech Stack
 
