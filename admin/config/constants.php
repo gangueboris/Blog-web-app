@@ -1,6 +1,6 @@
 <?php
 session_start();
-define('ROOT_URL', 'http://localhost/myBlog/');
+define('ROOT_URL', 'http://localhost/blogWebApp/');
 define('DB_HOST', 'localhost');
 define('DB_USER', 'Boris');
 define('DB_PWD', 'admin1234');
