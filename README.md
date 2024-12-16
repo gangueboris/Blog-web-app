@@ -40,16 +40,16 @@ This is a fully fonctionnal blog app that I made to learn more about php and mys
 - Open your web browser and go to: ```http://localhost/phpmyadmin```
 - Login with user : ```user``` and password: ```admin1234```
 - Create a database 'blog', and upload the SQL dump (blog-tables.sql) found in the extracted folder
-- 
+  
 #### 3. Configure Project Files
 - Open the ```httpd-vhosts.conf``` file from ```C:\wamp64\bin\apache\apache2.4.51\conf\extra\``` and append this
  ```
   <VirtualHost *:80>
-      ServerName blog
-      DocumentRoot "c:/wamp64/www/blog"
+      ServerName blogApp
+      DocumentRoot "c:/wamp64/www/blog-web-app"
 </VirtualHost>
 ```
-- Open the ```hosts``` file from ```C:\Windows\System32\drivers\etc\``` and append ```127.0.0.1 blog```
+- Open the ```hosts``` file from ```C:\Windows\System32\drivers\etc\``` and append ```127.0.0.1 blogApp```
 
 #### 4. Run the project locally
 - Open your browser and enter the project’s local URL: ```http://localhost/blog```
