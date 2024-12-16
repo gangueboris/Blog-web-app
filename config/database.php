@@ -177,4 +177,10 @@ class database{
         $get_featured = "SELECT* FROM posts WHERE Is_featured = 1";
         return $this->pdo->query($get_featured)->fetchAll()[0] ?? null;
     }
+    
+    # ======================== GET SEARCH =========================
+    public function getSearch($search){
+        $get_search_query = "SELECT* FROM posts WHERE title LIKE '%$search%'";
+        return $this->pdo->query($get_search_query)->fetchAll();
+    }
 }

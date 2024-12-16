@@ -1,107 +1,87 @@
 <?php
-include 'partials/header.php';
-$db = new database();
-$categories = $db->getCategories();
-?>
+ echo "<br> <br> <br>";
+    include 'partials/header.php';
+    $db = new database();
+    $categories = $db->getCategories();
+    $posts = $db->getPostsDisplay();
+    $featured = $db->getFeatured();
 
+?>
 <!--================================================= SEARCH-BAR ==========================================================-->
 <section class="search">
-    <form class="container search__container" action="">
+    <?php if(isset($_SESSION['search'])): ?>
+                <div class="alert__message container error search__container">
+                    <p>
+                        <?= $_SESSION['search'];
+                            unset($_SESSION['search']);
+                        ?>
+                    </p>
+                </div>
+    <?php endif ?>
+    <form class="container search__container" action="<?=ROOT_URL?>blog-class.php" method="POST">
         <div>
             <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="search" placeholder="Search">
+            <input type="search" placeholder="Search" name="search">
         </div>
-        <button class="search__btn" type="submit">Go</button>
+        <button class="search__btn" type="submit" name="search__btn">Go</button>
     </form>
 </section>
 
 <section class="general__post">
-    <div class="container general__post-container">
-        <article class="post">
-            <div class="post-image">
-                <img src="./images/blog8.jpg" alt="firstimage.jpg">
-            </div>
-            <div class="post-content">
-                <a href="#" class="category">Business</a>
-                <h2 class="post__title"><a href="post.php">How to choose bicycle for springs in Autralia, Shopping Centers ?</a></h2>
-                <p class="post__text">Lorem ipsum dolor Lorem ipsum dolor sit amet. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint accusantium quam quis molestiae perferendis. Nemo nostrum culpa voluptatibus quod! Aut eligendi magni voluptatem omnis ea dolorum cumque, expedita quo maxime praesentium adipisci sunt fugit molestiae aliquam eaque provident. Eveniet, perspiciatis molestiae ipsa repellat, veniam, provident dolore cum cumque et ab iure quia impedit. Excepturi, harum id. sit amet, consectetur adipisicing elit. Quisquam nesciunt possimus commodi accusamus tempore inventore cupiditate, est architecto mollitia soluta quam, eaque, nam harum? Saepe, voluptas! Aut, quaerat. </p>
-                <div class="post_profile">
-                    <div class="post_profile-img">
-                        <img src="./images/avatar15.jpg" alt="prfile-img.jpg">
-                    </div>
-                    <div class="post-profile-info">
-                        <h6>By: Boris GANGUE</h6>
-                        <p>November 30, 2024</p>
+        <div class="container general__post-container">
+            <?php if(isset($_SESSION['search-result'])): 
+               $posts = $_SESSION['search-result'];
+               unset($_SESSION['search-result']);
+            ?>
+
+            <?php elseif(isset($_SESSION['search-result-error'])): $posts = array();?>
+                
+                <div class="alert__message error container">
+                   <p>
+                       <?= $_SESSION['search-result-error'];
+                           unset($_SESSION['search-result-error']);
+                       ?>
+                   </p>
+               </div>
+            <?php endif ?>
+            <?php foreach($posts as $post):?>
+            <article class="post">
+                <div class="post-image">
+                    <img src="./images/<?=$post['Thumbnail']?>" alt="firstimage.jpg">
+                </div>
+                <div class="post-content">
+                    <?php 
+                    # Get Category & Author
+                        $category_id = (int)$post['Category_id'];
+                        $author_id =  (int)$post['Author_id'];
+                        $category = $db->getCategory($category_id)[0];
+                        $author = $db->getUSer($author_id);
+                    ?>
+                    <a href="category-post.php" class="category"><?=$category['Title']?></a>
+                    <h2 class="post__title"><a href="post.php"><?=$post['Title']?></a></h2>
+                    <p class="post__text"><?=substr($post['Description'], 0, 300)?>...</p> <!--Troncatenation-->
+                    <div class="post_profile">
+                        <div class="post_profile-img">
+                            <img src="./images/<?=$author['Avatar']?>" alt="prfile-img.jpg">
+                        </div>
+                        <div class="post-profile-info">
+                            <h6>By: <?=$author['FirstName'] . "  " . $author['LastName']?></h6>
+                            <p><?=date("M d, Y - H:i", strtotime($post['Date_time']))?></p>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </article>
-        <article class="post">
-            <div class="post-image">
-                <img src="./images/blog8.jpg" alt="firstimage.jpg">
-            </div>
-            <div class="post-content">
-                <a href="#" class="category">Business</a>
-                <h2 class="post__title"><a href="post.php">How to choose bicycle for springs in Autralia, Shopping Centers ?</a></h2>
-                <p class="post__text">Lorem ipsum dolor Lorem ipsum dolor sit amet. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint accusantium quam quis molestiae perferendis. Nemo nostrum culpa voluptatibus quod! Aut eligendi magni voluptatem omnis ea dolorum cumque, expedita quo maxime praesentium adipisci sunt fugit molestiae aliquam eaque provident. Eveniet, perspiciatis molestiae ipsa repellat, veniam, provident dolore cum cumque et ab iure quia impedit. Excepturi, harum id. sit amet, consectetur adipisicing elit. Quisquam nesciunt possimus commodi accusamus tempore inventore cupiditate, est architecto mollitia soluta quam, eaque, nam harum? Saepe, voluptas! Aut, quaerat. </p>
-                <div class="post_profile">
-                    <div class="post_profile-img">
-                        <img src="./images/avatar4.jpg" alt="prfile-img.jpg">
-                    </div>
-                    <div class="post-profile-info">
-                        <h6 class="post__profile-author">By: Boris GANGUE</h6>
-                        <p class="post__profile-date">November 30, 2024</p>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="post">
-            <div class="post-image">
-                <img src="./images/blog90.jpg" alt="firstimage.jpg">
-            </div>
-            <div class="post-content">
-                <a href="#" class="category">Business</a>
-                <h2 class="post__title"><a href="post.php">How to choose bicycle for springs in Autralia, Shopping Centers ?</a></h2>
-                <p class="post__text">Lorem ipsum dolor Lorem ipsum dolor sit amet. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint accusantium quam quis molestiae perferendis. Nemo nostrum culpa voluptatibus quod! Aut eligendi magni voluptatem omnis ea dolorum cumque, expedita quo maxime praesentium adipisci sunt fugit molestiae aliquam eaque provident. Eveniet, perspiciatis molestiae ipsa repellat, veniam, provident dolore cum cumque et ab iure quia impedit. Excepturi, harum id. sit amet, consectetur adipisicing elit. Quisquam nesciunt possimus commodi accusamus tempore inventore cupiditate, est architecto mollitia soluta quam, eaque, nam harum? Saepe, voluptas! Aut, quaerat. </p>
-                <div class="post_profile">
-                    <div class="post_profile-img">
-                        <img src="./images/avatar16.jpg" alt="prfile-img.jpg">
-                    </div>
-                    <div class="post-profile-info">
-                        <h6 class="post__profile-author">By: Boris GANGUE</h6>
-                        <p class="post__profile-date">November 30, 2024</p>
-                    </div>
-                </div>
-            </div>
-        </article>
-        <article class="post">
-            <div class="post-image">
-                <img src="./images/blog5.jpg" alt="firstimage.jpg">
-            </div>
-            <div class="post-content">
-                <a href="#" class="category">Business</a>
-                <h2 class="post__title"><a href="post.php">How to choose bicycle for springs in Autralia, Shopping Centers ?</a></h2>
-                <p class="post__text">Lorem ipsum dolor Lorem ipsum dolor sit amet. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint accusantium quam quis molestiae perferendis. Nemo nostrum culpa voluptatibus quod! Aut eligendi magni voluptatem omnis ea dolorum cumque, expedita quo maxime praesentium adipisci sunt fugit molestiae aliquam eaque provident. Eveniet, perspiciatis molestiae ipsa repellat, veniam, provident dolore cum cumque et ab iure quia impedit. Excepturi, harum id. sit amet, consectetur adipisicing elit. Quisquam nesciunt possimus commodi accusamus tempore inventore cupiditate, est architecto mollitia soluta quam, eaque, nam harum? Saepe, voluptas! Aut, quaerat. </p>
-                <div class="post_profile">
-                    <div class="post_profile-img">
-                        <img src="./images/avatar12.jpg" alt="prfile-img.jpg">
-                    </div>
-                    <div class="post-profile-info">
-                        <h6 class="post__profile-author">By: Boris GANGUE</h6>
-                        <p class="post__profile-date">November 30, 2024</p>
-                    </div>
-                </div>
-            </div>
-        </article>   
-    </div>
+            </article>
+            <?php endforeach?>
+        </div>
 </section>
-<section class="categories">
-    <div class=" container categories__container">
-    <?php foreach($categories as $category):?>
-        <a href="<?=ROOT_URL?>category-post.php?id=<?=$category['Id']?>" class="category"><?=$category['Title']?></a>
-    <?php endforeach ?>
-    </div>
-</section>
+
+    <section class="categories">
+        <div class=" container categories__container">
+            <?php foreach($categories as $category):?>
+            <a href="<?=ROOT_URL?>category-post.php?id=<?=$category['Id']?>" class="category"><?=$category['Title']?></a>
+            <?php endforeach ?>
+        </div>
+    </section>
 
 <?php
 include 'partials/footer.php';

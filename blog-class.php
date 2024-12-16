@@ -382,13 +382,30 @@ class blog{
                     header("Location: " . ROOT_URL . "admin/");
                 }
             }
+             # ============================ SEARCH-POST REQUEST =================================
+            elseif(isset($_POST['search__btn'])){
+                # Get the input
+                $search = filter_var($_POST['search'], FILTER_SANITIZE_SPECIAL_CHARS);
+                if(!$search){
+                    $_SESSION['search'] = "Search bar was not filled !";
+                }else{
+                    $result = $this->db->getSearch($search);
+                    if($result){
+                        $_SESSION['search-result'] = $result;
+                    }else{
+                        $_SESSION['search-result-error'] = 'No post found for this search';
+                    }
+                }
+                header('Location: ' . ROOT_URL . "blog.php");
+                die();    
+            }
         }
         
         # ============================ HANDLE GET REQUEST =================================
         elseif($_SERVER['REQUEST_METHOD'] == 'GET'){
             # Get the request
             $request = explode(';', $_GET['id']);
-            # Delete user requesty
+            # Delete user request
             if($request[0] == 'user'){
                 # Get the user from the database
                 $user_id = (int)$request[1];

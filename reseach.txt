@@ -56,11 +56,11 @@ III. Steps to follow when grabbing a form input.
 7. Complete delete category (Done)
 8. Create post table, add post, edit post (is_featured, update thubmail) (Done)
 9. Solve the category_id problem (Done)
-10.  Rewrite my deletepost.php (Done)
+10. Rewrite my deletepost.php (Done)
 11. Read add post and manage post to see how they suppose to work and come back to your program to do write it correctly (Done)
 12. In the edit post, when a new thubmail is add to modify the previous, it doesn't work. (Done)
 13. Make in way each user can see and manager is own posts (Done)
-
+14. Handle categories search to appears
 
 
 
