@@ -20,7 +20,7 @@
                 </div>
                 <div class="post-content">
                     <a href="<?=ROOT_URL?>blog-class.php?id=category-post;<?=$category['Id']?>" class="category"><?=$category['Title']?></a>
-                    <h2 class="post__title"><a href="post.php"><?=$featured['Title']?></a></h2>
+                    <h2 class="post__title"><a href="<?=ROOT_URL?>post.php?id=<?=$featured['Id']?>"><?=$featured['Title']?></a></h2>
                     <p class="post__text"><?=substr($featured['Description'], 0, 300)?>...</p>
                     <div class="post_profile">
                         <div class="post_profile-img">
@@ -52,7 +52,7 @@
                         $author = $db->getUSer($author_id);
                     ?>
                     <a href="<?=ROOT_URL?>blog-class.php?id=category-post;<?=$category['Id']?>" class="category"><?=$category['Title']?></a>
-                    <h2 class="post__title"><a href="post.php"><?=$post['Title']?></a></h2>
+                    <h2 class="post__title"><a href="<?=ROOT_URL?>post.php?id=<?=$post['Id']?>"><?=$post['Title']?></a></h2>
                     <p class="post__text"><?=substr($post['Description'], 0, 300)?>...</p> <!--Troncatenation-->
                     <div class="post_profile">
                         <div class="post_profile-img">

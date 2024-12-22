@@ -135,7 +135,7 @@ class database{
         return $this->pdo->query($insertUser_query);
    }
 
-    # ======================== INSERT POST =========================
+    # ======================== GET POSTS =========================
     public function getPosts($user_id){
         $get_post_query = "SELECT* FROM posts WHERE Author_id = $user_id";
         return $this->pdo->query($get_post_query)->fetchAll();
@@ -157,7 +157,7 @@ class database{
     # ======================== GET POST ELEMENTS =========================
     public function getPostColumn($table, $id){
         $get_postTitle_query = "SELECT $table FROM posts WHERE Id=$id";
-        return $this->pdo->query($get_postTitle_query)->fetchColumn();
+        return $this->pdo->query($get_postTitle_query)->fetchAll();
     }
 
     # ======================== UPDATE POST =========================
