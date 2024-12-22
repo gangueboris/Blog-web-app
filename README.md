@@ -1,6 +1,8 @@
 ## 🤖 Introduction
 This is a fully fonctionnal blog app that I made to learn more about php and mysql. this is my first project made with WAMP stack. I hope you will have fun in testing.
 
+![image](https://github.com/user-attachments/assets/1af69555-4c4d-4280-8668-842cd51f732c)
+
 ## ⚙️ Tech Stack
 
 ### Frontend
