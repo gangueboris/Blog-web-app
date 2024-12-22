@@ -36,7 +36,7 @@
 
             <?php elseif(isset($_SESSION['search-result-error'])): $posts = array();?>
                 
-                <div class="alert__message error container">
+                <div class="alert__message error">
                    <p>
                        <?= $_SESSION['search-result-error'];
                            unset($_SESSION['search-result-error']);

@@ -26,7 +26,7 @@ if(isset($_SESSION['user-id'])){
 <body>
     <nav>
         <div class="container nav__container">
-            <h2 class="nav__logo"><a href="<?=ROOT_URL?>index.php">BORIS</a></h2>
+            <h2 class="nav__logo"><a href="<?=ROOT_URL?>index.php">GAMIFY</a></h2>
             <ul class="nav__container-links">
                 <li><a href="<?=ROOT_URL?>blog.php">Blog</a></li>
                 <li><a href="<?=ROOT_URL?>about.php">About</a></li>

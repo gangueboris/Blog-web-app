@@ -110,3 +110,21 @@ In terms of organisations in implementing. We first attack the the Users table, 
 First get the input data from the method, verify if they are valid or not. if not create a $_SESSION['request_name'] = "error ..."
 
 After that, write another if to check if there is any error. if so redirect on the page. Otherwise, insert data in the database.
+
+
+======================= Changements ==========================
+1. Colors
+- Primary colors: 
+. Electric Blue (#1E90FF):Buttons, links, and interactive elements
+. Dark Gray (#2C2C2C) : Background for main content areas
+- Accent colors:
+. Neon Green (#39FF14) : Highlights, call-to-action buttons, and hover effects
+. Crimson Red (#DC143C) : Alerts, warnings, or to emphasize critical content
+
+2. Font : Orbitron
+
+3. Post design 
+
+4. Sign-In and Sign-Up design
+
+5. Solve, positionning problem (error, search...)
