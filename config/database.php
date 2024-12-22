@@ -103,6 +103,12 @@ class database{
         $get_categories_query = "SELECT* FROM categories";
         return $this->pdo->query($get_categories_query);
     }
+     
+    # ======================== GET CATEGORIES POST =========================
+    public function getCategoriesPosts($category_post_id){
+        $categories_posts_query = "SELECT* FROM posts WHERE Category_id = '$category_post_id'";
+        return $this->pdo->query($categories_posts_query)->fetchAll();
+    }
 
     # ======================== GET CATEGORY =========================
     public function getCategory($category_id){

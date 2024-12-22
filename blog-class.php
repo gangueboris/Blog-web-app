@@ -411,7 +411,6 @@ class blog{
                 $user_id = (int)$request[1];
               
                 $user = $this->db->getUser((int)$user_id);
-                var_dump($user);
                 # Delete the avatar
                 $avatar_name = $user['Avatar'];
                 $avatar_path = 'images/' . $avatar_name;
@@ -426,8 +425,7 @@ class blog{
                 }
                 header("Location: " . ROOT_URL . "admin/manage-user.php");
                 die();
-            }
-            elseif($request[0] == 'category'){
+            }elseif($request[0] == 'category'){
                 # Get category_id
                 $category_id = (int)$request[1];
                 $category = $this->db->getCategory($category_id);
@@ -438,8 +436,7 @@ class blog{
                     header("Location: " . ROOT_URL . "admin/manage-categories.php");
                     die();
                 }
-            }
-            elseif($request[0] == 'post'){
+            }elseif($request[0] == 'post'){
                 # get post id
                 $post_id = (int)$request[1];
 
@@ -454,12 +451,20 @@ class blog{
                     header("Location: " . ROOT_URL . "admin/");
                     die();
                 }
+            }elseif($request[0] == 'category-post'){
+                # Get category-post' id
+                $category_post_id = (int)$request[1];
+                $_SESSION['category-post-data'] = $this->db->getCategoriesPosts($category_post_id);
+                $_SESSION['category-post-category'] = $this->db->getCategory($category_post_id)[0][1];
+                var_dump($_SESSION['category-post-category']);
+                header("Location: " . ROOT_URL . "category-post.php");
+                die();
             }
         }
     }
     # Function to process any image 
     public function processImage($image, $request){
-         // ============ Process the avatar ==============
+        # ============ Process the avatar ==============
             // Rename the avatar
             $time = time();
             $image_name = $time . $image['name'];

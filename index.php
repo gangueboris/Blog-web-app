@@ -19,7 +19,7 @@
                     <img src="./images/<?=$featured['Thumbnail']?>" alt="firstimage.jpg">
                 </div>
                 <div class="post-content">
-                    <a href="category-post.php" class="category"><?=$category['Title']?></a>
+                    <a href="<?=ROOT_URL?>blog-class.php?id=category-post;<?=$category['Id']?>" class="category"><?=$category['Title']?></a>
                     <h2 class="post__title"><a href="post.php"><?=$featured['Title']?></a></h2>
                     <p class="post__text"><?=substr($featured['Description'], 0, 300)?>...</p>
                     <div class="post_profile">
@@ -51,7 +51,7 @@
                         $category = $db->getCategory($category_id)[0];
                         $author = $db->getUSer($author_id);
                     ?>
-                    <a href="category-post.php" class="category"><?=$category['Title']?></a>
+                    <a href="<?=ROOT_URL?>blog-class.php?id=category-post;<?=$category['Id']?>" class="category"><?=$category['Title']?></a>
                     <h2 class="post__title"><a href="post.php"><?=$post['Title']?></a></h2>
                     <p class="post__text"><?=substr($post['Description'], 0, 300)?>...</p> <!--Troncatenation-->
                     <div class="post_profile">
@@ -71,7 +71,7 @@
     <section class="categories">
         <div class=" container categories__container">
             <?php foreach($categories as $category):?>
-            <a href="<?=ROOT_URL?>category-post.php?id=<?=$category['Id']?>" class="category"><?=$category['Title']?></a>
+                <a href="<?=ROOT_URL?>blog-class.php?id=category-post;<?=$category['Id']?>" class="category"><?=$category['Title']?></a>
             <?php endforeach ?>
         </div>
     </section>
