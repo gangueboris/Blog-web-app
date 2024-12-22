@@ -45,7 +45,7 @@ This is a fully fonctionnal blog app that I made to learn more about php and mys
 
 #### 2. Set Up the Database
 - Open your web browser and go to: ```http://localhost/phpmyadmin```
-- Login with user : ```user``` and password: ```admin1234```
+- Login with user : ```Boris``` and password: ```admin1234```
 - Create a database 'blog', and upload the SQL dump (blog-tables.sql) found in the extracted folder
   
 #### 3. Configure Project Files
